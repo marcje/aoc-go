@@ -2,7 +2,6 @@ package solutions2024
 
 import (
 	"fmt"
-	"math"
 	"sort"
 	"strconv"
 	"strings"
@@ -29,7 +28,7 @@ func parseInputColumns(lines []string) ([]int, []int, error) {
 	for _, line := range lines {
 		columns := strings.Fields(line)
 		if len(columns) < 2 {
-			return nil, nil, fmt.Errorf("unexpected input format: %q", line)
+			return nil, nil, fmt.Errorf("unexpected input format, expected two columns but got: %q", line)
 		}
 
 		leftValue, err := strconv.Atoi(columns[0])
@@ -49,13 +48,21 @@ func parseInputColumns(lines []string) ([]int, []int, error) {
 	return leftList, rightList, nil
 }
 
+// calculateDistance calculates the difference between two integers.
+func calculateDistance(a, b int) int {
+	if a > b {
+		return a - b
+	}
+	return b - a
+}
+
 func solvePart1(leftList []int, rightList []int) int {
 	sort.Ints(leftList)
 	sort.Ints(rightList)
 
 	totalDistance := 0
 	for i := 0; i < len(leftList); i++ {
-		totalDistance += int(math.Abs(float64(leftList[i] - rightList[i])))
+		totalDistance += calculateDistance(leftList[i], rightList[i])
 	}
 
 	return totalDistance
