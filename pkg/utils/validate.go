@@ -7,9 +7,6 @@ import (
 
 var supportedYears = []int{2024}
 
-const minDay = 1
-const maxDay = 25
-
 func ValidateArgs(args []string) (int, int, error) {
 	if len(args) != 3 {
 		return 0, 0, fmt.Errorf("invalid number of arguments")
@@ -21,8 +18,8 @@ func ValidateArgs(args []string) (int, int, error) {
 	}
 
 	day, err := strconv.Atoi(args[2])
-	if err != nil || day < minDay || day > maxDay {
-		return 0, 0, fmt.Errorf("invalid day: %s (must be between %d and %d)", args[2], minDay, maxDay)
+	if err != nil || day < 1 || day > 25 {
+		return 0, 0, fmt.Errorf("invalid day: %s (must be between 1 and 25)", args[2])
 	}
 
 	return year, day, nil
