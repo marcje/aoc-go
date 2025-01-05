@@ -17,7 +17,7 @@ func SolveDay1(inputLines []string) {
 	part1 := solvePart1(leftList, rightList)
 	fmt.Println("Day 1 - Part 1:", part1)
 
-	part2 := solvePart2(inputLines)
+	part2 := solvePart2(leftList, rightList)
 	fmt.Println("Day 1 - Part 2:", part2)
 }
 
@@ -56,7 +56,7 @@ func calculateDistance(a, b int) int {
 	return b - a
 }
 
-func solvePart1(leftList []int, rightList []int) int {
+func solvePart1(leftList, rightList []int) int {
 	sort.Ints(leftList)
 	sort.Ints(rightList)
 
@@ -68,6 +68,16 @@ func solvePart1(leftList []int, rightList []int) int {
 	return totalDistance
 }
 
-func solvePart2(lines []string) int {
-	return 0
+func solvePart2(leftList, rightList []int) int {
+	rightListCount := make(map[int]int)
+	for _, number := range rightList {
+		rightListCount[number] = rightListCount[number] + 1
+	}
+
+	similarityScore := 0
+	for _, num := range leftList {
+		similarityScore += num * rightListCount[num]
+	}
+
+	return similarityScore
 }
