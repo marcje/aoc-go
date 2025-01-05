@@ -15,6 +15,15 @@ var solutionsMap = map[int]map[int]SolutionFunc{
 	},
 }
 
+// GetSupportedYears returns a slice of years that are implemented.
+func GetSupportedYears() []int {
+	var years []int
+	for year := range solutionsMap {
+		years = append(years, year)
+	}
+	return years
+}
+
 // Check if a solution exists for the given year and day, and run it if available.
 func GetSolutionFunction(year, day int) (SolutionFunc, error) {
 	daySolutions, ok := solutionsMap[year]

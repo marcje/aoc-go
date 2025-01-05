@@ -5,15 +5,14 @@ import (
 	"strconv"
 )
 
-var supportedYears = []int{2024}
-
 func ValidateArgs(args []string) (int, int, error) {
 	if len(args) != 3 {
 		return 0, 0, fmt.Errorf("invalid number of arguments")
 	}
 
+	supportedYears := GetSupportedYears()
 	year, err := strconv.Atoi(args[1])
-	if err != nil || !validYear(year) {
+	if err != nil || !validYear(year, supportedYears) {
 		return 0, 0, fmt.Errorf("invalid year: %s (supported years: %v)", args[1], supportedYears)
 	}
 
@@ -25,7 +24,7 @@ func ValidateArgs(args []string) (int, int, error) {
 	return year, day, nil
 }
 
-func validYear(year int) bool {
+func validYear(year int, supportedYears []int) bool {
 	for _, supportedYear := range supportedYears {
 		if year == supportedYear {
 			return true
