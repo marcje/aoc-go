@@ -5,12 +5,11 @@ import (
 	"strconv"
 )
 
-func ValidateArgs(args []string) (int, int, error) {
+func ValidateArgs(args []string, supportedYears []int) (int, int, error) {
 	if len(args) != 3 {
 		return 0, 0, fmt.Errorf("invalid number of arguments")
 	}
 
-	supportedYears := GetSupportedYears()
 	year, err := strconv.Atoi(args[1])
 	if err != nil || !validYear(year, supportedYears) {
 		return 0, 0, fmt.Errorf("invalid year: %s (supported years: %v)", args[1], supportedYears)

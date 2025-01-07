@@ -1,4 +1,4 @@
-package utils
+package core
 
 import (
 	solutions2024 "aoc-go/internal/solutions/2024"
