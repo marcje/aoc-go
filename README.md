@@ -55,8 +55,6 @@ Follow these steps to implement a new challenge solution:
 
 ## Future ideas
 
-- Replace CLI arguments with CLI flags, allowing `-y` for year and `-d` for day
-- Prompt user input if year and / or day are not provided
 - Implement logging and use it for error handling
 - Use interfaces to ensure daily solutions implement `SolveDay<x>` and `solvePart<1,2>`
 - Add unit tests and allow for test input from AoC challenges

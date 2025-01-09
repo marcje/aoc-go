@@ -15,7 +15,7 @@ var solutionsMap = map[int]map[int]SolutionFunc{
 	},
 }
 
-// GetSupportedYears returns a slice of years that are implemented.
+// GetSupportedYears returns a slice of years that are implemented for validation in flags.go.
 func GetSupportedYears() []int {
 	var years []int
 	for year := range solutionsMap {

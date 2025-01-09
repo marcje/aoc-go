@@ -3,16 +3,15 @@ package main
 import (
 	"aoc-go/internal/core"
 	"aoc-go/pkg/utils"
+	"flag"
 	"fmt"
-	"os"
 )
 
 func main() {
-	supportedYears := core.GetSupportedYears()
-	year, day, err := utils.ValidateArgs(os.Args, supportedYears)
+	day, year, err := core.ParseFlags()
 	if err != nil {
 		fmt.Println("Error:", err)
-		fmt.Println("Usage: go run main.go <year> <day>")
+		flag.CommandLine.Usage()
 		return
 	}
 
