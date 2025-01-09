@@ -6,7 +6,7 @@ import (
 )
 
 // Dynamically map years and days to implemented functions.
-type SolutionFunc func([]string)
+type SolutionFunc func([]string) (int, int, error)
 
 // solutionsMap maps implemented years and day numbers to their corresponding solution functions.
 var solutionsMap = map[int]map[int]SolutionFunc{

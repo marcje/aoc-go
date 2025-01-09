@@ -7,18 +7,15 @@ import (
 	"strings"
 )
 
-func SolveDay1(inputLines []string) {
+func SolveDay1(inputLines []string) (int, int, error) {
 	leftList, rightList, err := parseInputColumns(inputLines)
 	if err != nil {
-		fmt.Printf("error parsing input lists: %v\n", err)
-		return
+		return 0, 0, fmt.Errorf("error parsing input lists: %v", err)
 	}
 
 	part1 := solvePart1(leftList, rightList)
-	fmt.Println("Day 1 - Part 1:", part1)
-
 	part2 := solvePart2(leftList, rightList)
-	fmt.Println("Day 1 - Part 2:", part2)
+	return part1, part2, nil
 }
 
 // Parse day 1 input, which consists of two columns per line.
