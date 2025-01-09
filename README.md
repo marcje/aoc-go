@@ -41,7 +41,7 @@ export AOC_SESSION_COOKIE=your_cookie_value
 ## Usage
 
 ```bash
-go run cmd/aoc/main.go <year> <day>
+go run cmd/aoc/main.go -y <year> -d <day>
 ```
 
 ## Implement challenges
