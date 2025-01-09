@@ -2,7 +2,6 @@ package main
 
 import (
 	"aoc-go/internal/core"
-	"aoc-go/pkg/utils"
 	"flag"
 	"fmt"
 	"os"
@@ -20,7 +19,7 @@ func cliRunner() int {
 		return 1
 	}
 
-	dailyInput, err := utils.GetDailyInput(year, day)
+	dailyInput, err := core.GetDailyInput(year, day)
 	if err != nil {
 		fmt.Printf("Error retrieving input file: %v\n", err)
 		return 1
